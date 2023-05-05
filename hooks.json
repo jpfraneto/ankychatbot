@@ -1,0 +1,32 @@
+[
+  {
+    "id": "anky",
+    "execute-command": "./deploy.sh",
+    "command-working-directory": "./",
+    "response-message": "Executing deploy script...",
+    "trigger-rule": {
+      "and": [
+        {
+          "match": {
+            "type": "payload-hash-sha1",
+            "secret": "undiaviunavacasincolavestidadeuniforme",
+            "parameter": {
+              "source": "header",
+              "name": "X-Hub-Signature"
+            }
+          }
+        },
+        {
+          "match": {
+            "type": "value",
+            "value": "refs/heads/main",
+            "parameter": {
+              "source": "payload",
+              "name": "ref"
+            }
+          }
+        }
+      ]
+    }
+  }
+]
