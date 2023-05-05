@@ -39,7 +39,7 @@ client.on('message', async message => {
     return await message.reply('pong');
   }
   return message.reply(
-    'Wena conchetumare!!!!! Está funcionando esta wea. Un lujo. Ahora viene automatizar todo para que sea la voz de Anky.'
+    'Esto significa que está funcionando este tema. Anky está agarrando forma. Anky está empezando su viaje.'
   );
 });
 
