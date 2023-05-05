@@ -15,9 +15,7 @@ client.on('message', async message => {
   if (message.body === '!ping') {
     return await message.reply('pong');
   }
-  return message.reply(
-    'Wena conchetumare!!!!! Está funcionando esta wea. Un lujo. Ahora viene automatizar todo para que sea la voz de Anky.'
-  );
+  return message.reply('Wena conchetumare!!!!! Está funcionando esta wea. Un lujo. Ahora viene automatizar todo para que sea la voz de anky');
 });
 
 client.initialize();
