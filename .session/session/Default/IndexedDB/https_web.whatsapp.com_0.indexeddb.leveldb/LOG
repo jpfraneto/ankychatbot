@@ -1,14 +1,18 @@
-2023/05/07-09:03:09.151 12203 Reusing MANIFEST /Users/jpfraneto/Desktop/sadhana/anky/.session/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/05/07-09:03:09.151 12203 Recovering log #138
-2023/05/07-09:03:09.152 12203 Reusing old log /Users/jpfraneto/Desktop/sadhana/anky/.session/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000138.log 
-2023/05/07-09:03:09.152 12203 Delete type=2 #137
-2023/05/07-09:03:09.217 9b03 Level-0 table #143: started
-2023/05/07-09:03:09.227 9b03 Level-0 table #143: 11684 bytes OK
-2023/05/07-09:03:09.235 9b03 Delete type=0 #138
-2023/05/07-09:03:09.235 9b03 Manual compaction at level-0 from '\x00-\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00.\x00\x00\x00' @ 0 : 0; will stop at '\x00-\x06 \x03\x00\x00\x00\x00\x00\x80V@\x00\x01\x0b\x00I\x00d\x00T\x00t\x00l\x009\x000\x00D\x00a\x00y\x00s' @ 143150 : 1
-2023/05/07-09:03:09.235 9b03 Compacting 1@0 + 1@1 files
-2023/05/07-09:03:09.264 9b03 Generated table #144@0: 30175 keys, 247595 bytes
-2023/05/07-09:03:09.264 9b03 Compacted 1@0 + 1@1 files => 247595 bytes
-2023/05/07-09:03:09.271 9b03 compacted to: files[ 0 1 1 0 0 0 0 ]
-2023/05/07-09:03:09.271 9b03 Delete type=2 #143
-2023/05/07-09:03:09.273 9b03 Manual compaction at level-0 from '\x00-\x06 \x03\x00\x00\x00\x00\x00\x80V@\x00\x01\x0b\x00I\x00d\x00T\x00t\x00l\x009\x000\x00D\x00a\x00y\x00s' @ 143150 : 1 .. '\x00.\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/05/07-11:35:22.742 b203 Reusing MANIFEST /Users/jpfraneto/Desktop/sadhana/anky/.session/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/05/07-11:35:22.742 b203 Recovering log #197
+2023/05/07-11:35:22.872 b203 Reusing old log /Users/jpfraneto/Desktop/sadhana/anky/.session/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000197.log 
+2023/05/07-11:35:37.043 15e0b Compacting 1@1 + 1@2 files
+2023/05/07-11:35:37.090 15e0b Generated table #202@1: 13339 keys, 528979 bytes
+2023/05/07-11:35:37.090 15e0b Compacted 1@1 + 1@2 files => 528979 bytes
+2023/05/07-11:35:37.100 15e0b compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/05/07-11:35:37.100 15e0b Delete type=2 #200
+2023/05/07-11:35:37.100 15e0b Delete type=2 #5
+2023/05/07-11:35:40.821 2f07 Level-0 table #204: started
+2023/05/07-11:35:40.857 2f07 Level-0 table #204: 1024146 bytes OK
+2023/05/07-11:35:40.866 2f07 Delete type=0 #197
+2023/05/07-11:35:41.102 16103 Compacting 1@1 + 1@2 files
+2023/05/07-11:35:41.156 16103 Generated table #205@1: 23646 keys, 943441 bytes
+2023/05/07-11:35:41.156 16103 Compacted 1@1 + 1@2 files => 943441 bytes
+2023/05/07-11:35:41.165 16103 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/05/07-11:35:41.165 16103 Delete type=2 #202
+2023/05/07-11:35:41.165 16103 Delete type=2 #204

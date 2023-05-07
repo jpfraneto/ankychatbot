@@ -9,7 +9,8 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const prisma = require('./prismaClient');
 
-const { Client, LocalAuth } = require('whatsapp-web.js');
+let isAuthenticated = false;
+const { Client, LocalAuth, createWid } = require('whatsapp-web.js');
 
 const phoneNumber = '56985491126';
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
@@ -49,23 +50,29 @@ const client = new Client({
 // This is for updating the users every day, and sending them a message that will let them know what they need to work on.
 const fetchUsers = async () => {
   console.log('inside the fetchUser function');
+  if (!isAuthenticated) {
+    console.log('Client is not authenticated yet. Please wait and try again.');
+    return;
+  }
   const response = await axios.get('https://www.sadhana.lat/api/anky-whatsapp');
   const result = await response.data;
-  console.log('THE RESULT IS: ', result.users);
   result.users.forEach(async user => {
     const messageText = createWhatsappMessage(user);
+    const sanitized_number = user.whatsapp.toString().replace(/[- )(]/g, '');
     const strippedNumber = user.whatsapp.replace(/\D/g, '');
-    const id = { id: { _serialized: `whatsapp:${strippedNumber}@c.us` } };
-
-    try {
-      const info = await client.sendMessage(id, messageText);
-      console.log(`Message sent to ${user.name}: ${messageText}`);
-    } catch (error) {
+    const number_details = await client.getNumberId(strippedNumber);
+    console.log('the number details are: ', number_details);
+    if (number_details) {
+      const sendMessageData = await client.sendMessage(
+        number_details._serialized,
+        messageText
+      ); // send message
+      console.log(`The message to ${user.name} was sent.`);
+    } else {
       console.log(`Error sending message to ${user.name}: ${error.message}`);
     }
   });
 };
-fetchUsers();
 
 function createWhatsappMessage(user) {
   const { name, whatsapp, sadhanas } = user;
@@ -83,12 +90,11 @@ function createWhatsappMessage(user) {
     "\nRemember, staying committed to your challenges is crucial for your personal growth. You've got this! 💪\n\n";
   message += 'I wish you a fantastic and productive day! 🚀\n\n';
   message += 'Go to www.sadhana.lat/dashboard and get it going!';
-
   return message;
 }
 
 // This is for updating the active sadhanas every day at 3:33 UTC.
-cron.schedule('3 33 * * *', async () => {
+cron.schedule('33 3 * * *', async () => {
   try {
     const response = await axios.get(
       'https://www.sadhana.lat/api/update-sadhanas'
@@ -105,8 +111,15 @@ client.on('qr', qr => {
   qrcode.generate(qr, { small: true });
 });
 
+client.on('authenticated', () => {
+  console.log('Authenticated with WhatsApp');
+  isAuthenticated = true;
+});
+
 client.on('ready', () => {
   console.log('WhatsApp client is ready!');
+  fetchUsers();
+  cron.schedule('33 3 * * *', fetchUsers, { timezone: 'UTC' });
 });
 
 client.on('message', async message => {
@@ -120,7 +133,6 @@ client.on('message', async message => {
 });
 
 client.initialize();
-cron.schedule('33 3 * * *', fetchUsers, { timezone: 'UTC' });
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server listening at http://0.0.0.0:${port}`);
