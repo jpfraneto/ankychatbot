@@ -65,7 +65,7 @@ const fetchUsers = async () => {
     }
   });
 };
-// fetchUsers();
+fetchUsers();
 
 function createWhatsappMessage(user) {
   const { name, whatsapp, sadhanas } = user;
