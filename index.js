@@ -38,7 +38,12 @@ app.get('/api/users', async (req, res) => {
 });
 
 const client = new Client({
-  authStrategy: new LocalAuth({ dataPath: __dirname + '/.session' }),
+  authStrategy: new LocalAuth({
+    dataPath: __dirname + '/.session',
+    puppeteer: {
+      args: ['--no-sandbox'],
+    },
+  }),
 });
 
 // This is for updating the users every day, and sending them a message that will let them know what they need to work on.
