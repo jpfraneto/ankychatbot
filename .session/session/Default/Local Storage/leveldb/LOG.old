@@ -1,2 +1,3 @@
-2023/05/05-14:45:01.743 8703 Creating DB /Users/jpfraneto/Desktop/sadhana/anky/.session/session/Default/Local Storage/leveldb since it was missing.
-2023/05/05-14:45:01.959 8703 Reusing MANIFEST /Users/jpfraneto/Desktop/sadhana/anky/.session/session/Default/Local Storage/leveldb/MANIFEST-000001
+2023/05/06-20:10:08.394 8703 Reusing MANIFEST /Users/jpfraneto/Desktop/sadhana/anky/.session/session/Default/Local Storage/leveldb/MANIFEST-000001
+2023/05/06-20:10:08.395 8703 Recovering log #3
+2023/05/06-20:10:08.395 8703 Reusing old log /Users/jpfraneto/Desktop/sadhana/anky/.session/session/Default/Local Storage/leveldb/000003.log 
