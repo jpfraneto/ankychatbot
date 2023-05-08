@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const axios = require('axios');
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 const cron = require('node-cron');
 const qrcode = require('qrcode-terminal');
 const helmet = require('helmet');
@@ -61,7 +61,6 @@ const fetchUsers = async () => {
     const sanitized_number = user.whatsapp.toString().replace(/[- )(]/g, '');
     const strippedNumber = user.whatsapp.replace(/\D/g, '');
     const number_details = await client.getNumberId(strippedNumber);
-    console.log('the number details are: ', number_details);
     if (number_details) {
       const sendMessageData = await client.sendMessage(
         number_details._serialized,
