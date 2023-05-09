@@ -66,7 +66,11 @@ const fetchUsers = async () => {
         number_details._serialized,
         messageText
       ); // send message
-      console.log(`The message to ${user.name} was sent.`);
+      console.log(
+        `The message to ${
+          user.name
+        } was sent, in the following moment: ${new Date()}`
+      );
     } else {
       console.log(`Error sending message to ${user.name}: ${error.message}`);
     }
@@ -98,8 +102,7 @@ cron.schedule('33 3 * * *', async () => {
     const response = await axios.get(
       'https://www.sadhana.lat/api/update-sadhanas'
     );
-    const result = await response.json();
-    console.log('The sadhanas were updated successfully.');
+    console.log('The sadhanas were updated successfully. ', response.data);
   } catch (error) {
     console.error('Error updating sadhanas:', error);
   }
